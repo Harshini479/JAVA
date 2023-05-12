@@ -1,0 +1,33 @@
+
+
+First we need to install JAVA
+
+Java is prerequiste for both MAVEN and JENKINS
+
+Step1: sudo yum update -y
+Step2: sudo yum install java-11-openjdk (it will install JDK only)
+Step3: sudo yum install java-11-openjdk-devel(it will install JRE also)
+Step4: check whether java is installed or not
+      java -version
+If you already have JAVA installed you can change/check the JAVA version using below command.
+sudo update-alternatives --config java
+
+TRY TO FIND THE JAVA installation path
+Step1: Try to find where JAVA is installed ny running "$ file $(which java)"
+Step2: Now the output will be /usr/bin/java: symbolic link to `/etc/alternatives/java. Now dig more
+Step3: Run the file command on that location /etc/alternatives/java
+      $ file /etc/alternatives/java
+Step4: Now the output will be /etc/alternatives/java: symbolic link to `/usr/lib/jvm/java-8-openjdk.x86_64/bin/java'
+Step5: You can re-affirm the location running  file command on the symbolic path:
+      $ file /usr/lib/jvm/java-11-openjdk-11.0.18.0.10-1.amzn2.0.1.x86_64/bin/java
+Step6: Now this is the path where our JAVA installed 
+      /usr/lib/jvm/java-11-openjdk-11.0.18.0.10-1.amzn2.0.1.x86_64/bin
+
+Set JAVA environment variable :
+Step1: Got to /etc/profile.d
+Step2: Create java.sh file
+       export JAVA_HOME="/usr/lib/jvm/java-11-openjdk-11.0.18.0.10-1.amzn2.0.1.x86_64"
+       export PATH=$JAVA_HOME/bin:$PATH
+
+
+
